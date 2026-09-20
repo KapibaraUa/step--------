@@ -1,0 +1,36 @@
+
+GET http://localhost:4200/books
+
+###
+
+GET http://localhost:4200/books/10
+
+###
+
+GET http://localhost:4200/books?title=Чистий%20код
+
+###
+
+POST http://localhost:4200/books
+Content-Type: application/json
+
+{
+    "title": "Чистий код",
+    "price": 1000,
+    "is_active": true
+}
+
+###
+
+PUT http://localhost:4200/books/3
+Content-Type: application/json
+
+{
+    "title": "1984 (нове видання)",
+    "price": 550,
+    "is_active": false
+}
+
+###
+
+DELETE http://localhost:4200/books/3

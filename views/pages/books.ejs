@@ -1,0 +1,66 @@
+<div class="py-4">
+  <!-- Верхняя панель с заголовком и поиском -->
+  <div class="books-page-header d-flex justify-content-between align-items-center flex-wrap gap-3">
+    <div>
+      <h1 class="books-title-main">📚 Каталог детских книг</h1>
+      <p class="books-subtitle">Книги загружены напрямую из базы данных PostgreSQL</p>
+    </div>
+
+    <!-- Поиск по названию -->
+    <form action="/books" method="GET" class="d-flex gap-2 search-box">
+      <input 
+        type="text" 
+        name="title" 
+        class="form-control search-input" 
+        placeholder="Поиск по названию книги..." 
+      />
+      <button type="submit" class="search-btn">Найти</button>
+      <a href="/books" class="btn btn-outline-secondary d-flex align-items-center">Сброс</a>
+    </form>
+  </div>
+
+  <!-- Сетка карточек с книгами -->
+  <div class="books-grid">
+    <% if (books && books.length > 0) { %>
+      <% books.forEach(book => { %>
+        <div class="book-card">
+          <div class="book-img-wrapper">
+            <img 
+              src="/image/<%= book.image || (book.id + '.jpg') %>" 
+              alt="<%= book.title %>" 
+              class="book-img"
+              onerror="this.onerror=null; this.src='/image/book.jpg';"
+            />
+            <% const active = book.is_active === true || book.is_active === 'true' || book.is_active === 't' || book.is_active === 1; %>
+            <span class="book-badge <%= active ? 'badge-active' : 'badge-inactive' %>">
+              <%= active ? 'В наличии' : 'Под заказ' %>
+            </span>
+          </div>
+
+          <div class="book-body">
+            <div>
+              <h3 class="book-title" title="<%= book.title %>"><%= book.title %></h3>
+              <% if (book.create_time) { %>
+                <p class="book-date">Добавлено: <%= new Date(book.create_time).toLocaleDateString('ru-RU') %></p>
+              <% } %>
+            </div>
+
+            <div class="book-footer">
+              <div class="book-price-block">
+                <span class="book-price-label">Цена</span>
+                <span class="book-price"><%= book.price %> ₴</span>
+              </div>
+              <button class="book-button" type="button">В корзину</button>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <div class="empty-state">
+        <h3>Книги не найдены</h3>
+        <p class="text-muted">По вашему запросу ничего не найдено или в таблице books1 нет записей.</p>
+        <a href="/books" class="btn btn-primary mt-3">Показать все книги</a>
+      </div>
+    <% } %>
+  </div>
+</div>
