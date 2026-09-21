@@ -3,9 +3,47 @@ import { books } from "../data/books.js";
 import { BookCreateType, BookType } from "../types/BookType.js";
 import { getBooksByTitle } from "../utils/showBooks.js";
 import { BookResponseType } from "../types/BookResponseType.js";
+import path from 'node:path';
 import { pool } from "../db/database.js";
-
+import multer from "multer";
 const router = Router();
+
+ 
+const storage = multer.diskStorage({
+  destination:(req,file,cb)=>{
+    cb(null,"public/image")
+  },
+  filename:(req,file,cb)=>{
+    const uniqueFileName = Date.now() + "-" + file.originalname;
+    cb(null,uniqueFileName)
+  }
+})
+const upload = multer({storage})
+ 
+
+router.get(
+  "/add-book",
+  (req: Request, res: Response) => {
+    res.render("pages/bookform", {title:"Add Book"})
+  },
+);
+
+router.post(
+  "/add-book",
+  upload.single("image"),
+  (
+    req: Request<{},{},BookCreateType>,
+    res: Response,
+  ) => {
+  const {title, price, publication_year, author_id} = req.body
+  const is_active = req.body.is_active?true:false
+  const image = req.file
+  console.log(image)
+  res.end(`${title}`)
+  
+})
+
+
 
 function compareBook(b1: BookType, b2: BookType): number {
   return b2.id - b1.id;
@@ -135,5 +173,7 @@ router.delete("/:id", (req: Request, res: Response) => {
   };
   res.status(response.status).json(response);
 });
+
+
 
 export default router;

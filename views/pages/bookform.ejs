@@ -1,0 +1,42 @@
+<form method ="POST" action="#" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" name="title">
+  </div>
+
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input type="number" class="form-control" name="price">
+  </div>
+
+ <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" name="is_active">
+    <label class="form-check-label" for="is_active">Is active?</label>
+  </div>
+  
+  <div class="mb-3">
+    <label for="publication_year" class="form-label">Publication Year</label>
+    <input type="number" class="form-control" name="publication_year">
+  </div>
+  
+  
+<div class="mb-3">
+    <label class="form-label">Image</label>
+    <input type="file" name="image" class="form-control" >
+  </div>
+  
+<div class="mb-3">
+    <label for="author_id" class="form-label">Author</label>
+    <select name="author_id" class="form-select">
+        <option value="1">Author 1</option>
+        <option value="2">Author 2</option>
+    </select>
+  </div>
+
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Add book</button>
+</form>

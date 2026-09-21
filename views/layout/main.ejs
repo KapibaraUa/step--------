@@ -7,10 +7,10 @@
         <link href="/styles/books.css" rel="stylesheet" />
         <title><%= locals.title || 'Library' %></title>
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         <%- include('../partials/header') %>
         
-        <div class="container"><%-body %></div>
+        <main class="container my-4 flex-grow-1"><%-body %></main>
         
         <%- include('../partials/footer') %>
     </body>
