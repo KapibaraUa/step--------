@@ -50,7 +50,7 @@
 
 
 import path from "node:path"
-import FileWorker from "./FileWorker.js"
+import FileWorker from "./utils/FileWorker.js"
 
 const FILE_TO_PATH = path.join('logs','logs.txt')
 

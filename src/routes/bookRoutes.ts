@@ -7,19 +7,57 @@ import path from 'node:path';
 import { pool } from "../db/database.js";
 import multer from "multer";
 const router = Router();
-
- 
 const storage = multer.diskStorage({
-  destination:(req,file,cb)=>{
-    cb(null,"public/image")
+  destination: (req, file, cb) => {
+    cb(null, path.join("public", "images"));
   },
-  filename:(req,file,cb)=>{
-    const uniqueFileName = Date.now() + "-" + file.originalname;
-    cb(null,uniqueFileName)
-  }
-})
-const upload = multer({storage})
+  filename: (req, file, cb) => {
+    const uniqueName = Date.now() + "-" + file.originalname;
  
+    cb(null, uniqueName);
+  },
+});
+ 
+ const upload = multer({ storage });
+
+router.get("/", async (req: Request, res: Response) => {
+  // try {
+  //   let our_books: BookType[] = [];
+  //   const searchTitle = req.query.title ? String(req.query.title).trim() : "";
+
+  //   if (searchTitle) {
+  //     const result = await pool.query(
+  //       "SELECT * FROM books1 WHERE title ILIKE $1 ORDER BY id ASC",
+  //       [`%${searchTitle}%`]
+  //     );
+  //     our_books = result.rows;
+  //   } else {
+  //     const result = await pool.query("SELECT * FROM books1 ORDER BY id ASC");
+  //     our_books = result.rows;
+  //   }
+
+  //   console.log("Загружено из БД:", our_books.map(b => ({ id: b.id, title: b.title, is_active: b.is_active, type: typeof b.is_active })));
+
+  //   res.render("pages/books", {
+  //     title: "Каталог детских книг",
+  //     books: our_books,
+  //   });
+  // } catch (error) {
+  //   console.error("Ошибка при получении книг из БД books1:", error);
+  //   // Фолбэк на статический массив, если БД недоступна
+  //   let our_books: BookType[] | null = null;
+  //   if (req.query.title !== undefined) {
+  //     our_books = getBooksByTitle(String(req.query.title), books);
+  //   }
+  //   res.render("pages/books", {
+  //     title: "Каталог детских книг",
+  //     books: our_books !== null ? our_books : books,
+  //   });
+  //}
+  const data = await fetch(`${process.env.PATH_TO_JSON_SERVER}/books`)
+  const json = await data.json();
+  res.render("pages/books", {books: json, title:"Books"});
+});
 
 router.get(
   "/add-book",
@@ -31,59 +69,46 @@ router.get(
 router.post(
   "/add-book",
   upload.single("image"),
-  (
-    req: Request<{},{},BookCreateType>,
-    res: Response,
-  ) => {
-  const {title, price, publication_year, author_id} = req.body
-  const is_active = req.body.is_active?true:false
-  const image = req.file
-  console.log(image)
-  res.end(`${title}`)
-  
-})
+  async (req: Request, res: Response) => {
+    try {
+      const { title, price, is_active, publication_year } = req.body;
 
+      // Ім'я збереженого файлу
+      const image = req.file?.filename ?? null;
+      const data = await fetch(`${process.env.PATH_TO_JSON_SERVER}/books`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, price, is_active, image, publication_year })
+      });
+      // const result = await pool.query( ...
 
+      res.redirect("/books");
+    } catch (error) {
+      console.error(error);
+
+      res.status(500).send("Помилка при додаванні книги");
+    }
+  }
+);
+
+router.get("/delete/:id", async (req: Request, res: Response) => {
+  const id: number = +req.params.id;
+  try {
+    await fetch(`${process.env.PATH_TO_JSON_SERVER}/books/${id}`, {
+      method: "DELETE",
+    });
+    res.redirect("/books");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Помилка при видаленні книги");
+  }
+});
 
 function compareBook(b1: BookType, b2: BookType): number {
   return b2.id - b1.id;
 }
 
-router.get("/", async (req: Request, res: Response) => {
-  try {
-    let our_books: BookType[] = [];
-    const searchTitle = req.query.title ? String(req.query.title).trim() : "";
 
-    if (searchTitle) {
-      const result = await pool.query(
-        "SELECT * FROM books1 WHERE title ILIKE $1 ORDER BY id ASC",
-        [`%${searchTitle}%`]
-      );
-      our_books = result.rows;
-    } else {
-      const result = await pool.query("SELECT * FROM books1 ORDER BY id ASC");
-      our_books = result.rows;
-    }
-
-    console.log("Загружено из БД:", our_books.map(b => ({ id: b.id, title: b.title, is_active: b.is_active, type: typeof b.is_active })));
-
-    res.render("pages/books", {
-      title: "Каталог детских книг",
-      books: our_books,
-    });
-  } catch (error) {
-    console.error("Ошибка при получении книг из БД books1:", error);
-    // Фолбэк на статический массив, если БД недоступна
-    let our_books: BookType[] | null = null;
-    if (req.query.title !== undefined) {
-      our_books = getBooksByTitle(String(req.query.title), books);
-    }
-    res.render("pages/books", {
-      title: "Каталог детских книг",
-      books: our_books !== null ? our_books : books,
-    });
-  }
-});
 
 router.get("/:id", async (req: Request, res: Response) => {
   const id: number = +req.params.id;

@@ -1,0 +1,332 @@
+{
+  "authors": [
+    {
+      "id": "1",
+      "name": "Тарас",
+      "surname": "Шевченко"
+    },
+    {
+      "id": "2",
+      "name": "Леся",
+      "surname": "Українка"
+    },
+    {
+      "id": "3",
+      "name": "Іван",
+      "surname": "Франко"
+    },
+    {
+      "id": "4",
+      "name": "Іван",
+      "surname": "Багряний"
+    },
+    {
+      "id": "5",
+      "name": "Ліна",
+      "surname": "Костенко"
+    },
+    {
+      "id": "6",
+      "name": "Іван",
+      "surname": "Нечуй-Левицький"
+    },
+    {
+      "id": "7",
+      "name": "Пантелеймон",
+      "surname": "Куліш"
+    },
+    {
+      "id": "8",
+      "name": "Іван",
+      "surname": "Котляревський"
+    },
+    {
+      "id": "9",
+      "name": "Габріель Гарсія",
+      "surname": "Маркес"
+    },
+    {
+      "id": "10",
+      "name": "Джордж",
+      "surname": "Орвелл"
+    },
+    {
+      "id": "11",
+      "name": "Антуан де Сент",
+      "surname": "Екзюпері"
+    },
+    {
+      "id": "12",
+      "name": "Джоан",
+      "surname": "Роулінг"
+    },
+    {
+      "id": "13",
+      "name": "Джон Рональд Руел",
+      "surname": "Толкін"
+    },
+    {
+      "id": "14",
+      "name": "Френк",
+      "surname": "Герберт"
+    },
+    {
+      "id": "15",
+      "name": "Рей",
+      "surname": "Бредбері"
+    },
+    {
+      "id": "16",
+      "name": "Артур Конан",
+      "surname": "Дойл"
+    },
+    {
+      "id": "17",
+      "name": "Пауло",
+      "surname": "Коельйо"
+    },
+    {
+      "id": "18",
+      "name": "Михайло",
+      "surname": "Булгаков"
+    }
+  ],
+  "books": [
+    {
+      "id": "1",
+      "title": "Кобзар",
+      "price": 349.99,
+      "image": "kobzar.jpg",
+      "is_active": true
+    },
+    {
+      "id": "3",
+      "title": "Захар Беркут",
+      "price": 279.99,
+      "image": "zahar-berkut.jpg",
+      "is_active": true
+    },
+    {
+      "id": "4",
+      "title": "Тигролови",
+      "price": 320,
+      "image": "tigrolovy.jpg",
+      "is_active": true
+    },
+    {
+      "id": "5",
+      "title": "Маруся Чурай",
+      "price": 389.5,
+      "image": "marusya-churai.jpg",
+      "is_active": true
+    },
+    {
+      "id": "6",
+      "title": "Кайдашева сім'я",
+      "price": 250,
+      "image": "kaidasheva-simya.jpg",
+      "is_active": true
+    },
+    {
+      "id": "7",
+      "title": "Чорна рада",
+      "price": 299,
+      "image": "chorna-rada.jpg",
+      "is_active": true
+    },
+    {
+      "id": "8",
+      "title": "Енеїда",
+      "price": 219.99,
+      "image": "eneida.jpg",
+      "is_active": true
+    },
+    {
+      "id": "9",
+      "title": "Сто років самотності",
+      "price": 499.99,
+      "image": "100-years.jpg",
+      "is_active": true
+    },
+    {
+      "id": "10",
+      "title": "1984",
+      "price": 429.99,
+      "image": "1984.jpg",
+      "is_active": true
+    },
+    {
+      "id": "11",
+      "title": "Колгосп тварин",
+      "price": 249.99,
+      "image": "animal-farm.jpg",
+      "is_active": true
+    },
+    {
+      "id": "12",
+      "title": "Маленький принц",
+      "price": 199.99,
+      "image": "little-prince.jpg",
+      "is_active": true
+    },
+    {
+      "id": "13",
+      "title": "Гаррі Поттер і філософський камінь",
+      "price": 599.99,
+      "image": "hp1.jpg",
+      "is_active": true
+    },
+    {
+      "id": "14",
+      "title": "Гобіт",
+      "price": 449.99,
+      "image": "hobbit.jpg",
+      "is_active": true
+    },
+    {
+      "id": "15",
+      "title": "Володар перснів",
+      "price": 899.99,
+      "image": "lotr.jpg",
+      "is_active": true
+    },
+    {
+      "id": "16",
+      "title": "Дюна",
+      "price": 649.99,
+      "image": "dune.jpg",
+      "is_active": true
+    },
+    {
+      "id": "17",
+      "title": "451 градус за Фаренгейтом",
+      "price": 359.99,
+      "image": "451.jpg",
+      "is_active": true
+    },
+    {
+      "id": "18",
+      "title": "Шерлок Голмс",
+      "price": 399.99,
+      "image": "sherlock.jpg",
+      "is_active": true
+    },
+    {
+      "id": "19",
+      "title": "Алхімік",
+      "price": 289.99,
+      "image": "alchemist.jpg",
+      "is_active": true
+    },
+    {
+      "id": "20",
+      "title": "Майстер і Маргарита",
+      "price": 379.99,
+      "image": "master-margarita.jpg",
+      "is_active": true
+    }
+  ],
+  "author_books": [
+    {
+      "id": "1",
+      "author_id": 1,
+      "book_id": 1
+    },
+    {
+      "id": "2",
+      "author_id": 2,
+      "book_id": 2
+    },
+    {
+      "id": "3",
+      "author_id": 3,
+      "book_id": 3
+    },
+    {
+      "id": "4",
+      "author_id": 4,
+      "book_id": 4
+    },
+    {
+      "id": "5",
+      "author_id": 5,
+      "book_id": 5
+    },
+    {
+      "id": "6",
+      "author_id": 6,
+      "book_id": 6
+    },
+    {
+      "id": "7",
+      "author_id": 7,
+      "book_id": 7
+    },
+    {
+      "id": "8",
+      "author_id": 8,
+      "book_id": 8
+    },
+    {
+      "id": "9",
+      "author_id": 9,
+      "book_id": 9
+    },
+    {
+      "id": "10",
+      "author_id": 10,
+      "book_id": 10
+    },
+    {
+      "id": "11",
+      "author_id": 10,
+      "book_id": 11
+    },
+    {
+      "id": "12",
+      "author_id": 11,
+      "book_id": 12
+    },
+    {
+      "id": "13",
+      "author_id": 12,
+      "book_id": 13
+    },
+    {
+      "id": "14",
+      "author_id": 13,
+      "book_id": 14
+    },
+    {
+      "id": "15",
+      "author_id": 13,
+      "book_id": 15
+    },
+    {
+      "id": "16",
+      "author_id": 14,
+      "book_id": 16
+    },
+    {
+      "id": "17",
+      "author_id": 15,
+      "book_id": 17
+    },
+    {
+      "id": "18",
+      "author_id": 16,
+      "book_id": 18
+    },
+    {
+      "id": "19",
+      "author_id": 17,
+      "book_id": 19
+    },
+    {
+      "id": "20",
+      "author_id": 18,
+      "book_id": 20
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

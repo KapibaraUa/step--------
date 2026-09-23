@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npx tsx watch ./src/server.ts",
     "server": "npx tsx watch ./src/server.ts",
     "start": "npx tsx ./src/index.ts",
     "build": "tsc"
@@ -13,18 +14,21 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
     "@types/ejs": "^3.1.5",
     "@types/express": "^5.0.6",
     "@types/express-ejs-layouts": "^2.5.4",
     "@types/multer": "^2.2.0",
     "@types/node": "^26.4.1",
     "@types/pg": "^8.23.1",
+    "json-server": "^1.0.0-beta.15",
     "ngrok": "^5.0.0-beta.2",
     "tsx": "^4.23.13",
     "typescript": "^7.0.2"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.4.2",
     "ejs": "^6.0.1",
     "express": "^5.2.1",

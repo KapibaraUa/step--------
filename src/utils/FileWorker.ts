@@ -25,6 +25,10 @@ export default class FileWorker
     }
 }
 
+    public static get path(): string {
+        return FileWorker.path_to_file;
+    }
+
     public static async writeToFile(filePath:string, content:string):Promise<void>{
         try{
             await fs.appendFile(filePath, content+'\n', 'utf-8')
@@ -39,6 +43,9 @@ export default class FileWorker
     public static async readFile(filePath:string):Promise<Buffer|undefined>
     {
         try{
+            if (!filePath || filePath === "{}" || filePath.startsWith("{")) {
+                return undefined;
+            }
             return await fs.readFile(filePath);
         } catch(error)
         {

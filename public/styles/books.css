@@ -195,7 +195,17 @@
     cursor: pointer;
     transition: all 0.2s ease;
 }
-
+.book-delete{
+    background-color: #3d405b;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.55rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
 .book-button:hover {
     background-color: #2b2d42;
     transform: translateY(-2px);
